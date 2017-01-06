@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Dijkstra.Graph import Vertex, Edge
+from Dijkstra.Graph import Graph, Vertex, Edge
 from Dijkstra.dijkstra import dijkstra
 
 
@@ -46,6 +46,10 @@ def test_dijkstra() -> None:
         Edge(9, F, D),
         Edge(6, F, E),
     ]
+
+    g = Graph([A, B, C, D, E, F])
+
+    print(g.items.A.edges)
 
     print(dijkstra(A))
 

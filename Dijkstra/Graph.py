@@ -2,9 +2,23 @@
 from typing import Iterable, Optional
 
 
+class GraphItems:
+    def __init__(self, vertexes: Iterable["Vertex"]) -> None:
+        self._vertexes = {v.name: v for v in vertexes}
+
+    def __getattr__(self, item: str) -> "Vertex":
+        try:
+            return self._vertexes[item]
+        except KeyError:
+            pass
+        raise AttributeError("'{klass}' object has no attribute '{attr_name}'".format(klass=self.__class__.__name__,
+                                                                                      attr_name=item))
+
+
 class Graph:
     __slots__ = (
         "vertexes",
+        "items",
     )
 
     def __init__(self, vertexes: Iterable["Vertex"]) -> None:
@@ -12,6 +26,7 @@ class Graph:
             self.vertexes = vertexes
         else:
             self.vertexes = list(vertexes)
+        self.items = GraphItems(self.vertexes)
 
 
 class Vertex:
