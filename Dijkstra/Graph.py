@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import Iterable, Optional
+from typing import Iterable, Optional, Union, Any
 
 
 class GraphItems:
@@ -48,12 +48,37 @@ class Vertex:
 
 class Edge:
     __slots__ = (
-        "weight",
+        "_weight",
         "start",
         "end",
     )
 
     def __init__(self, weight: float, start: Vertex, end: Vertex) -> None:
-        self.weight = weight
+        self._weight = weight
         self.start = start
         self.end = end
+
+    @property
+    def weight(self) -> float:
+        return self._weight
+
+    @weight.setter
+    def weight(self, new_weight: Union[int, float]) -> None:
+        if isinstance(new_weight, int) or isinstance(new_weight, float):
+            if new_weight < 0:
+                raise ValueError("Weight can't be negative")
+            self._weight = float(new_weight)
+        else:
+            raise TypeError("Weight must be a number")
+
+    # Or
+
+    # def __setattr__(self, key: str, value: Any):
+    #     if key == "weight":
+    #         if isinstance(value, int) or isinstance(value, float):
+    #             if value < 0:
+    #                 raise ValueError("Weight can't be negative")
+    #             self._weight = float(value)
+    #         else:
+    #             raise TypeError("Weight must be a number")
+    #     super().__setattr__(key, value)

@@ -47,6 +47,7 @@ def test_dijkstra() -> None:
         Edge(6, F, E),
     ]
 
+    F.edges[0].weight = 2
     g = Graph([A, B, C, D, E, F])
 
     print(g.items.A.edges)
