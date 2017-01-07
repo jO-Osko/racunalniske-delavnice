@@ -10,7 +10,8 @@ class Graph:
 
 
 class Vertex:
-    def __init__(self, name: str, edges=None):
+    def __init__(self, vertex_uid, name: str, edges=None):
+        self.vertex_uid = vertex_uid
         self.name = name
         self.edges = edges or []
 

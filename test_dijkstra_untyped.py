@@ -4,12 +4,12 @@ from DijkstraUntyped.dijkstra import dijkstra
 
 
 def test_dijkstra():
-    A = Vertex("A")
-    B = Vertex("B")
-    C = Vertex("C")
-    D = Vertex("D")
-    E = Vertex("E")
-    F = Vertex("F")
+    A = Vertex(1, "A")
+    B = Vertex(2, "B")
+    C = Vertex(3, "C")
+    D = Vertex(4, "D")
+    E = Vertex(5, "E")
+    F = Vertex(6, "F")
 
     A.edges = [
         Edge(7, A, B),
