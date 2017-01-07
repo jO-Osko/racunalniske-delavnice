@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from typing import Iterable, Optional, Union, Any
+from typing import Iterable, Optional, Union, Any, NewType
 
 
 class GraphItems:
@@ -31,11 +31,15 @@ class Graph:
 
 class Vertex:
     __slots__ = (
+        "vertex_uid",
         "name",
         "edges",
     )
 
-    def __init__(self, name: str, edges: Optional[Iterable["Edge"]] = None) -> None:
+    VertexUid = NewType("VertexUid", int)
+
+    def __init__(self, vertex_uid: VertexUid, name: str, edges: Optional[Iterable["Edge"]] = None) -> None:
+        self.vertex_uid = vertex_uid  # type: Vertex.VertexUid
         self.name = name
         self.edges = edges or []  # type: Iterable[Edge]
 

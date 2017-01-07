@@ -4,12 +4,12 @@ from Dijkstra.dijkstra import dijkstra
 
 
 def test_dijkstra() -> None:
-    A = Vertex("A")
-    B = Vertex("B")
-    C = Vertex("C")
-    D = Vertex("D")
-    E = Vertex("E")
-    F = Vertex("F")
+    A = Vertex(Vertex.VertexUid(1), "A")
+    B = Vertex(Vertex.VertexUid(2), "B")
+    C = Vertex(Vertex.VertexUid(3), "C")
+    D = Vertex(Vertex.VertexUid(4), "D")
+    E = Vertex(Vertex.VertexUid(5), "E")
+    F = Vertex(Vertex.VertexUid(6), "F")
 
     A.edges = [
         Edge(7, A, B),
@@ -47,7 +47,6 @@ def test_dijkstra() -> None:
         Edge(6, F, E),
     ]
 
-    F.edges[0].weight = 2
     g = Graph([A, B, C, D, E, F])
 
     print(g.items.A.edges)
