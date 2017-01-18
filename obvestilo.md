@@ -9,7 +9,7 @@ Najprej si bomo na obstoječi python skripti pogledali, kako sploh izgleda dodaj
 
 
 ## Odkrivanje napak
-Na že spisan program sestavljen in več razredov bomo dodali tipe in poskušali najti napako.
+Na že spisan program sestavljen iz več razredov bomo dodali tipe in poskušali najti napako.
 
 ## Kaj skrivajo objekti
 Da lahko objekte uporabljamo še bolj nam jezik omogoča kar nekaj bljižnjic, ki pa so občano skrite. Če bo ostal čas si bomo pogledali, kako lahko uporabljamo "lastnosti" (properties) namesto "geterjev", kako na razredu dinamično definiramo nove metode in atribute, ter kako lahko s pomočjo atributa `__slots__` preprečimo nepotrebno porabo spomina in s tem povečamo hitrost programa (in kakšne težave to prinese).
