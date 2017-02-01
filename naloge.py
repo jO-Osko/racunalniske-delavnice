@@ -72,7 +72,7 @@ def multiply(x, y=1.0):
 # Z uporabo funkcije multiply definiraj novo funkcijo, ki sprejme eno stevilko in jo pomnozi z 10**6, kaksen bo njen tip?
 up_by_mil = lambda x: ...
 
-# Kaksen pa je tip miltiply ?
+# Kaksen pa je tip multiply ?
 multiply2 = multiply
 
 
@@ -90,7 +90,7 @@ def my_sum(*nums):
 print(my_sum(*gaps))
 
 
-# Dopolni funkcijo, tako, da bo sprejela funkcijo iz celih v cela stevila in seznam, in vrnila seznam vrednosti te funkcije
+# Napisi funkcijo map, ki pa naj za zacetek deluje samo na celih stevilih
 def my_int_map(fun, items):
     ...
 
