@@ -21,6 +21,11 @@ class Person:
     def calculate_number_of_grandchildren(self):
         return sum(child.get_number_of_children() for child in self.children)
 
+    @classmethod
+    def from_data(cls, data):
+        # return cls(data["first"], data["last"], data["children"])
+        return cls(**data)
+
 
 class Employee(Person):
     def __init__(self, first, last, children=None, uid=0):
@@ -36,4 +41,9 @@ A1 = Employee("a", "b")
 A2 = Person("a", "b")
 B = Person("a", "b", [A, A1, A2])
 C = Employee("a", "b", [B, B, A])
+
+AA = Employee.from_data({"first": "John", "last": "Beton", "children": []})
+
+print(AA.get_employee())
+
 print(C.get_number_of_grandchildren())
