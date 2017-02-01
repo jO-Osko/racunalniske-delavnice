@@ -9,7 +9,7 @@ class Person:
         self.last_name = last
         self.children = children or []
 
-    def get_full_name(self) -> str:
+    def get_full_name(self):
         return self.first_name + " " + self.last_name
 
     def get_number_of_children(self):
@@ -18,12 +18,12 @@ class Person:
     def get_number_of_grandchildren(self):
         return self.calculate_number_of_grandchildren()
 
-    def calculate_number_of_grandchildren(self) -> int:
+    def calculate_number_of_grandchildren(self):
         return sum(child.get_number_of_children() for child in self.children)
 
 
 class Employee(Person):
-    def __init__(self, first: str, last: str, children=None, uid=0):
+    def __init__(self, first, last, children=None, uid=0):
         super().__init__(first, last, children)
         self.uid = uid or 0
 

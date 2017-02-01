@@ -2,6 +2,8 @@
 
 """Sample stuff without types"""
 
+# Vsem spremenljivkam dopisi primerne tipe
+
 # Variables
 x = 1
 y = 2
@@ -21,6 +23,8 @@ number_str = "5"
 
 # Problems
 
+# S pomocjo anotacij poskrbi da se mypy kljub napaki ne bo pritozeval
+
 try:
     error = number_str + a
 except TypeError:
@@ -30,14 +34,14 @@ except TypeError:
     correct = number_str + str(a)
 
 
-# Language allows functions
+# Dopolni funkcijo greet, da bo vrnila pozdrav uporabniku, dopisi ji tudi tipe
 def greet(name, greeting_start="Hello: ", greeting_end="!"):
-    return greeting_start + name + greeting_end
-
+    ...
 
 print(greet(another_string))
 
-# and lists
+
+# Dopisi tipe
 gaps = [j for j in range(2, 10)]
 
 sq = [(k, k * k) for k in gaps]
@@ -60,72 +64,85 @@ populations = {
     'Michigan': 9.91,
 }
 
-
+# Funkcija multiply naj sprejme dve realni stevili in vrne njun produkt
 def multiply(x, y=1.0):
-    return x * y
+    ...
 
 
-up_by_mil = lambda x: multiply(x, 10 ** 6)
+# Z uporabo funkcije multiply definiraj novo funkcijo, ki sprejme eno stevilko in jo pomnozi z 10**6, kaksen bo njen tip?
+up_by_mil = lambda x: ...
 
+# Kaksen pa je tip miltiply ?
 multiply2 = multiply
 
+
+# Ce si vse naredil ok bi to moralo pravilno prikazati stevilo ljudi v posamezni drzavi
 for city, pop in populations.items():
     populations[city] = int(up_by_mil(pop))
 
+print(populations)
 
-# Vararg
+# Napisi funkcijo my_sum, ki sprejmne seznam celih stevil in vrne njihovo vsoto (ali 0, ce je seznam prazen), bodi pazljiv, saj se mypy in pycharm razlikujeta pri pregledu tipov
 def my_sum(*nums):
-    temp = 0
-    for num in nums:
-        temp += num
-    return temp
+    ...
 
 
 print(my_sum(*gaps))
 
 
+# Dopolni funkcijo, tako, da bo sprejela funkcijo iz celih v cela stevila in seznam, in vrnila seznam vrednosti te funkcije
+def my_int_map(fun, items):
+    ...
+
+print(my_int_map(up_by_mil, gaps))
+
+
+# Parametriziraj my_map, da bo sprejel funkcijo A -> B, seznam elementov tipa A in vrnil seznam elementov tipa B
 def my_map(fun, items):
-    return [fun(item) for item in items]
+    ...
 
+# Definiraj nov tip Stevilo, ki je lahko ali celo stevilo, ali pa realno stevilo
 
+# Definiraj tip Vektor, kot iterabilni objekt Stevil
+
+# Defniraj skalarni produkt za dva Vektorja (predpostavis lahko, da sta enakih dimenzij), ne pozabi na tipe, bodi kar se da univerzalen
 def dot_product(v1, v2):
-    return sum(i * j for i, j in zip(v1, v2))
+    """Bonus: naredi to v eni vrstici"""
+    ...
 
 
+vector_a = [17, 11, 15]
+vector_b = [5, -12, -3]
+
+print(dot_product(vector_a, vector_b))
+
+
+# Naredi izboljsano funkcijo(generator) map, ki namesto seznamov lahko dela z iterabilnimi objekti
 def my_proper_map(fun, items):
-    for item in items:
-        yield fun(item)
+    ...
 
 
+# Dopolni funkcijo fib, da bo kot generator vracala zaporedna fibonaccijeva stevila
 def fib(f1=0, f2=1):
-    yield f1
-    yield f2
-    while 1:
-        f1, f2 = f2, f1 + f2
-        yield f2
+    ...
 
 
 fib_num = fib()
 
-# Catch error
+# Kaj pravi mypy?
 print(",".join([next(fib_num) for _ in range(10)]))
 
 
+# Napisi funkcijo, ki sprejme indeksa i in j ter generator/iterator g in vraca elemente od i-tega do j-tega (ce je j None, naj to pocne v nedogled)
+def from_ith_to_jth(i=0, j=None, generator=range):
+    ...
+
+# izpisi fibonaccijeva stevila od 5 do 50
+
+
+# Napisi bolj zapleten generator, ki generira fibonaccijeva stevila, a preskakuje za skip, hkrati pa mu lahko posljemo poravek za skip, ce pa mu posljemo skip, ki je manjsi od 0 naj neha in vrne vsa stevila, ki jih je preskocil
 def fib_improved(f1=0, f2=1, skip=0):
-    missed = []
-    fib_gen = fib(f1, f2)
-    while skip >= 0:
-
-        for _ in range(skip):
-            missed.append(next(fib_gen))
-
-        new_skip = yield next(fib_gen)
-
-        if new_skip is None:
-            continue
-        skip = new_skip
-
-    return missed
+    ...
 
 
 f = fib_improved()
