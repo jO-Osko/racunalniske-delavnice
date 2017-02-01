@@ -105,7 +105,7 @@ def my_map(fun, items):
 
 # Definiraj tip Vektor, kot iterabilni objekt Stevil
 
-# Defniraj skalarni produkt za dva Vektorja (predpostavis lahko, da sta enakih dimenzij), ne pozabi na tipe, bodi kar se da univerzalen
+# Defniraj skalarni produkt za dva argumenta tipa Vektor (predpostavis lahko, da sta enakih dimenzij), ko dodajas tipe bodi kar se da univerzalen
 def dot_product(v1, v2):
     """Bonus: naredi to v eni vrstici"""
     ...
