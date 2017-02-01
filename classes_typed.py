@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """Types with classes"""
-from typing import List, Optional
+from typing import List, Optional, Any, Dict, TypeVar, Type
 
+T1 = TypeVar("T1", bound="Person")
 
 class Person:
     __slots__ = (
@@ -47,6 +48,10 @@ class Person:
     def calculate_number_of_grandchildren(self) -> int:
         return sum(child.number_of_children for child in self.children)
 
+    @classmethod
+    def from_data(cls: Type[T1], data: Dict[str, Any]) -> T1:
+        return cls(**data)
+
 
 class Employee(Person):
     __slots__ = (
@@ -67,4 +72,9 @@ A1 = Employee("a", "b")
 A2 = Person("a", "b")
 B = Person("a", "b", [A, A1, A2])
 C = Employee("a", "b", [B, B, A])
+
+AA = Employee.from_data({"first": "John", "last": "Beton", "children": []})
+
+print(AA.get_employee())
+
 print(C.number_of_grandchildren)
